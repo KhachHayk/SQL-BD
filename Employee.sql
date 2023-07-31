@@ -5,18 +5,13 @@ CREATE TABLE IF NOT EXISTS Department (
 
 CREATE TABLE IF NOT EXISTS Employees (
 	id SERIAL PRIMARY KEY,
-	name VARCHAR(40) NOT NULL
+	name VARCHAR(40) NOT NULL,
+	boss_name BOOLEAN,
+	boss_name_id INTEGER REFERENCES Employees(id)
 );
-
-CREATE TABLE IF NOT EXISTS Boss (
-	id SERIAL PRIMARY KEY,
-	name VARCHAR(40) NOT NULL
-);
-
 
 CREATE TABLE IF NOT EXISTS Еmployee (
 	employees_id INTEGER NOT NULL REFERENCES Employees(id),
 	department_id INTEGER NOT NULL REFERENCES Department(id),
-	boss_id INTEGER REFERENCES Boss(id),		
-	CONSTRAINT pk PRIMARY KEY (employees_id, department_id, boss_id)
+	CONSTRAINT pk PRIMARY KEY (employees_id, department_id)
 );
