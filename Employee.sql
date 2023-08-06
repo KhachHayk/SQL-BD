@@ -6,7 +6,6 @@ CREATE TABLE IF NOT EXISTS Department (
 CREATE TABLE IF NOT EXISTS Employees (
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(40) NOT NULL,
-	boss_name BOOLEAN,
 	boss_name_id INTEGER REFERENCES Employees(id)
 );
 
