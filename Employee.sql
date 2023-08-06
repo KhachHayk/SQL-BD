@@ -3,14 +3,14 @@ CREATE TABLE IF NOT EXISTS Department (
 	name VARCHAR(128) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS Employees (
+CREATE TABLE IF NOT EXISTS Staff (
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(40) NOT NULL,
-	boss_name_id INTEGER REFERENCES Employees(id)
+	boss_name_id INTEGER REFERENCES Staff(id)
 );
 
 CREATE TABLE IF NOT EXISTS Еmployee (
-	employees_id INTEGER NOT NULL REFERENCES Employees(id),
+	staff_id INTEGER NOT NULL REFERENCES Staff(id),
 	department_id INTEGER NOT NULL REFERENCES Department(id),
-	CONSTRAINT pk PRIMARY KEY (employees_id, department_id)
+	CONSTRAINT pk PRIMARY KEY (staff_id, department_id)
 );
